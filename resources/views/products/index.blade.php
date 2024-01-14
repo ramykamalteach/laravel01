@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <link rel="stylesheet" href="{{ asset('css/siteStyles.css') }}">
+
     <style>
         .active {
             background-color: magenta;
@@ -14,6 +16,12 @@
 
 </head>
 <body>
+    <div>
+        <h1>
+            Company Name 
+            <img src="{{ asset('img/logo2.png') }}" alt="">
+        </h1>
+    </div>
     <h1>Products Page</h1>
     <hr>
 

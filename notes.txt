@@ -157,4 +157,6 @@ Views in Laravel
 
     -----------------------
 
-    
+    Public folder
+        - css, img, fonts, js, ..... static files (resources)
+
