@@ -3,3 +3,24 @@ body {
     padding: 0 10px;
     border: 5px red solid;
 }
+
+.productsGrid {
+    
+}
+
+.productsGrid li:nth-child(1) {
+    font-size: 24px;
+    font-weight: bold;
+}
+.productsGrid li:nth-child(2) {
+    font-size: 16px;
+}
+.productsGrid li:nth-child(3) {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: underline;
+}
+
+table {
+    display: block;
+}

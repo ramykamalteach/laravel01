@@ -160,3 +160,26 @@ Views in Laravel
     Public folder
         - css, img, fonts, js, ..... static files (resources)
 
+    -------------------------
+
+    Layout in Blade template
+        To take a design from other blade :
+            @extends('store.storeLayout')
+
+        in the taken blade insert changable peices locations with
+            @yield('title')
+
+        in page changable peices asigned by 
+            @section('title')
+                Cart
+            @endsection
+
+
+        partial view
+            @include('store.siteFooter')
+            @include('products.oneProductView', $oneProduct)
+            @include(file, ['var' => $val,...])
+
+    https://gist.github.com/CiprianSpiridon/f4d7fe0d8a51f0714b62
+
+    

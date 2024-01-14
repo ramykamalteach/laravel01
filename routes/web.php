@@ -18,3 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index');
+
+/* --------- non-MVC pattern ----------- */
+Route::get('/cart', function(){
+    return view('store.cart');
+});
+Route::get('/item', function(){
+    return view('store.item');
+});
+Route::get('/shop', function(){
+    return view('store.shop');
+});

@@ -24,6 +24,18 @@
     </div>
     <h1>Products Page</h1>
     <hr>
+    @php
+        $str = "Our \n Shop";
+    @endphp
+
+    {{ $str }}
+
+    @foreach ($allProducts as $oneProduct)
+        @include('products.oneProductView', $oneProduct)
+    @endforeach
+
+    <hr>
+
 
     <table with="55%" border align="center">
         <tr>
