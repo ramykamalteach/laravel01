@@ -140,4 +140,21 @@ Views in Laravel
                 {{-- any comment  --}}
 
         
-        
+    ----------------------
+
+    revision to here
+
+    1- create project
+    2- create db
+    3- .env database_name    
+    4- create model/migration file
+    5- create migrate
+    6- create controller
+    7- add route role to productoController
+    8- edit productoController
+    9- create views-->product-->index.blade.php
+    10- edit index.blade.php
+
+    -----------------------
+
+    
