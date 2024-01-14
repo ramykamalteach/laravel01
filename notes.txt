@@ -1,0 +1,143 @@
+install Laravel on OS (windows 10,11) :
+    - nodejs
+    - composer
+    - xampp
+
+    - > node -v
+    - > composer -v
+    - > php -v
+
+--------------------------------------------------------------
+
+install new Laravel project (in any folder) :
+    - > composer create-project laravel/laravel appName
+
+    - vs code --> open folder (project name)
+---------------------------------------------------------
+first time we install laravel project :
+
+Failed to download laravel/laravel from dist: The zip extension and unzip/7z commands are both missing, skipping.
+The php.ini used by your command-line PHP is: C:\xampp\php\php.ini
+    Now trying to download from source
+
+xampp --> apatch  --> config --> php.ini
+
+;extension=zip
+change :
+extension=zip
+
+---------------------------------------------------------
+first Run :
+    - run xampp (apatch - mysql)
+    - create DB (manual by phpmyadmin)
+    - /.env  --> DB_DATABASE=database_name
+
+    - > php artisan serve
+
+    - to stop server - > ctrl + C
+
+------------------------------------------------------------------------------
+Goal : create Products table - show its contents on a page 
+
+    1- create Products table and Model
+        - > php artisan make:model Product -migration
+            *** php artisan make:model Product --> create model (first character capital)
+            *** model file in : /app/models
+            *** --migration  --> can be ( -m ) --> create migration file in /database/migrations
+            *** migration file : descripes table (field & relationships)
+            *** https://laravel.com/docs/10.x/migrations
+
+        - in migration file (/database/migrations/)
+
+                public function up()
+                {
+                    Schema::create('products', function (Blueprint $table) {
+                        $table->id();
+                        $table->string('productName');
+                        $table->text('productDescription');
+                        $table->double('price');
+                        $table->timestamps();
+                    });
+                }
+
+        - to create table Products with migration file schema :
+            - > php artisan migrate
+
+    2- product controller
+        - > php artisan make:controller ProductController
+            *** create ProductController.php in /app/Http/Controllers/
+
+    3- add "Route role" in /routes/web.php :        
+        - Route::get('/products', 'App\Http\Controllers\ProductController@index');
+
+    4- add index function to ProductController
+
+            public function index() {
+                dd("from product controller !!!!");
+            }
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+Views in Laravel
+
+    - to create a view
+            - go to /resources/views/
+            - create folder or file
+            - view file with *.blade.php
+
+    *** Blade template (view engine) : html, css, directives
+
+    - send data from controller to view :
+            return view('products.index', compact('allProducts'));
+
+    - recieve data from controller in view 
+
+    - examples of blade directives : 
+
+        @foreach : 
+                <table with="55%" border align="center">
+                    <tr>
+                        <th>Product name</th><th>Product description</th><th>Product price</th>
+                    </tr>
+                    @foreach ($allProducts as $oneProduct)
+                        <tr>
+                            <th>
+                                {{ $oneProduct->productName }}
+                            </th>
+                            <th>
+                                {{ $oneProduct->productDescription }}
+                            </th>
+                            <th>
+                                {{ $oneProduct->price }}
+                            </th>
+                        </tr>
+                        
+                    @endforeach
+                </table>
+
+        
+        @if :
+                @if ($oneProduct->price >= 100)
+                    <tr style="background-color: red;">
+                @else
+                    <tr style="background-color: green;">
+                @endif
+
+        condition :
+                <tr style="background-color: {{ $oneProduct->price >= 100 ? 'pink' : 'cyan' }};">
+
+        @php :
+                @php
+                    $i = 1;    
+                @endphp
+
+        print variable :
+                {{ $i++ }}
+
+        comment :
+                {{-- any comment  --}}
+
+        
+        
